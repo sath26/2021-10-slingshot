@@ -2,17 +2,12 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/LibERC20Token.sol";
 import "./ISlingshotModule.sol";
 
 interface ICurvePool {
-    function exchange(
-        int128 i,
-        int128 j,
-        uint256 dx,
-        uint256 min_dy
-    ) external;
+    function exchange(int128 i, int128 j, uint256 dx, uint256 min_dy) external;
 
     function exchange_underlying(
         int128 i,

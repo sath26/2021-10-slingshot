@@ -2,16 +2,20 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import "./openzeppelin-contracts/contracts/access/AccessControl.sol";
 
- /// @title   Admin Role Contract
- /// @author  DEXAG, Inc.
- /// @notice  This contract is a utility for an admin role access.
+/// @title   Admin Role Contract
+/// @author  DEXAG, Inc.
+/// @notice  This contract is a utility for an admin role access.
 abstract contract Adminable is AccessControl {
-    bytes32 public constant SLINGSHOT_ADMIN_ROLE = keccak256("SLINGSHOT_ADMIN_ROLE");
+    bytes32 public constant SLINGSHOT_ADMIN_ROLE =
+        keccak256("SLINGSHOT_ADMIN_ROLE");
 
     modifier onlyAdmin() {
-        require(hasRole(SLINGSHOT_ADMIN_ROLE, _msgSender()), "Adminable: not a SLINGSHOT_ADMIN_ROLE");
+        require(
+            hasRole(SLINGSHOT_ADMIN_ROLE, _msgSender()),
+            "Adminable: not a SLINGSHOT_ADMIN_ROLE"
+        );
         _;
     }
 

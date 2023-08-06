@@ -2,12 +2,15 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/LibERC20Token.sol";
 import "./ISlingshotModule.sol";
 
 interface IBalancerVault {
-    enum SwapKind { GIVEN_IN, GIVEN_OUT }
+    enum SwapKind {
+        GIVEN_IN,
+        GIVEN_OUT
+    }
 
     struct SingleSwap {
         bytes32 poolId;
@@ -30,8 +33,7 @@ interface IBalancerVault {
         FundManagement memory funds,
         uint256 limit,
         uint256 deadline
-    )
-    external payable returns (uint256 amountCalculated);
+    ) external payable returns (uint256 amountCalculated);
 }
 
 /// @title Slingshot Balancer Module
@@ -54,18 +56,22 @@ contract BalancerV2ModuleMatic is ISlingshotModule {
         IERC20(tokenIn).approveIfBelow(vault, totalAmountIn);
 
         IBalancerVault.SingleSwap memory singleSwap = IBalancerVault.SingleSwap(
-          poolId, IBalancerVault.SwapKind.GIVEN_IN, tokenIn, tokenOut, totalAmountIn, ""
+            poolId,
+            IBalancerVault.SwapKind.GIVEN_IN,
+            tokenIn,
+            tokenOut,
+            totalAmountIn,
+            ""
         );
 
-        IBalancerVault.FundManagement memory funds = IBalancerVault.FundManagement(
-          address(this), false, payable(address(this)), false
-        );
+        IBalancerVault.FundManagement memory funds = IBalancerVault
+            .FundManagement(
+                address(this),
+                false,
+                payable(address(this)),
+                false
+            );
 
-        IBalancerVault(vault).swap(
-            singleSwap,
-            funds,
-            1,
-            block.timestamp
-        );
+        IBalancerVault(vault).swap(singleSwap, funds, 1, block.timestamp);
     }
 }

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPLv3
 pragma solidity 0.8.7;
 
-import "@openzeppelin/contracts/utils/Strings.sol";
+import "../openzeppelin-contracts/contracts/utils/Strings.sol";
 
 /// @title Strings
 /// @notice Utility contract for strings

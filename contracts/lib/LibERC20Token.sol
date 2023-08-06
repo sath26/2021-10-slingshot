@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: AGPLv3
 pragma solidity 0.8.7;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
 /// @title LibERC20Token
 /// @notice Utility function for ERC20 tokens
@@ -12,7 +12,11 @@ library LibERC20Token {
     /// @param token Token to approve
     /// @param spender Address of wallet to approve spending for
     /// @param amount Amount of token to approve
-    function approveIfBelow(IERC20 token, address spender, uint256 amount) internal {
+    function approveIfBelow(
+        IERC20 token,
+        address spender,
+        uint256 amount
+    ) internal {
         uint256 currentAllowance = token.allowance(address(this), spender);
 
         if (currentAllowance < amount) {

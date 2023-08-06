@@ -2,7 +2,7 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import "../lib/LibERC20Token.sol";
 import "./ISlingshotModule.sol";
@@ -15,7 +15,7 @@ import "./ISlingshotModule.sol";
 abstract contract IUniswapModule is ISlingshotModule {
     using LibERC20Token for IERC20;
 
-    function getRouter() virtual public pure returns (address);
+    function getRouter() public pure virtual returns (address);
 
     /// @param amount Amount of the token being exchanged
     /// @param path Array of token addresses to swap
@@ -37,12 +37,13 @@ abstract contract IUniswapModule is ISlingshotModule {
 
         // for now, we only supporting .swapExactTokensForTokens()
         // amountOutMin is 1, because all we care is final check or output in Slingshot contract
-        IUniswapV2Router02(router).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            amount,
-            1, // amountOutMin
-            path,
-            address(this),
-            block.timestamp
-        );
+        IUniswapV2Router02(router)
+            .swapExactTokensForTokensSupportingFeeOnTransferTokens(
+                amount,
+                1, // amountOutMin
+                path,
+                address(this),
+                block.timestamp
+            );
     }
 }

@@ -2,7 +2,7 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/LibERC20Token.sol";
 import "./ISlingshotModule.sol";
 
@@ -51,7 +51,7 @@ contract BalancerModule is ISlingshotModule {
             tokenIn,
             totalAmountIn,
             tokenOut,
-            1,          // minAmountOut
+            1, // minAmountOut
             type(uint256).max // maxPrice
         );
     }

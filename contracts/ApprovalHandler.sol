@@ -2,17 +2,21 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "./openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "./openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 import "./Adminable.sol";
 
 contract ApprovalHandler is Adminable {
     using SafeERC20 for IERC20;
 
-    bytes32 public constant SLINGSHOT_CONTRACT_ROLE = keccak256("SLINGSHOT_CONTRACT_ROLE");
+    bytes32 public constant SLINGSHOT_CONTRACT_ROLE =
+        keccak256("SLINGSHOT_CONTRACT_ROLE");
 
     modifier onlySlingshot() {
-        require(isSlingshot(_msgSender()), "Adminable: not a SLINGSHOT_CONTRACT_ROLE");
+        require(
+            isSlingshot(_msgSender()),
+            "Adminable: not a SLINGSHOT_CONTRACT_ROLE"
+        );
         _;
     }
 
@@ -34,10 +38,12 @@ contract ApprovalHandler is Adminable {
         grantRole(SLINGSHOT_CONTRACT_ROLE, _slingshot);
     }
 
-    function transferFrom(address fromToken, address sender, address to, uint256 amount)
-        external
-        onlySlingshot
-    {
+    function transferFrom(
+        address fromToken,
+        address sender,
+        address to,
+        uint256 amount
+    ) external onlySlingshot {
         IERC20(fromToken).safeTransferFrom(sender, to, amount);
     }
 }

@@ -2,9 +2,9 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "./openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "./openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
+import "./openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 import "./interface/SlingshotI.sol";
 import "./interface/IWrappedNATIVE.sol";
 import "./Adminable.sol";
@@ -45,9 +45,16 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
         address indexed recipient
     );
     event NewModuleRegistry(address oldRegistry, address newRegistry);
-    event NewApprovalHandler(address oldApprovalHandler, address approvalHandler);
+    event NewApprovalHandler(
+        address oldApprovalHandler,
+        address approvalHandler
+    );
 
-    constructor (address _admin, address _nativeToken, address _wrappedNativeToken) {
+    constructor(
+        address _admin,
+        address _nativeToken,
+        address _wrappedNativeToken
+    ) {
         executioner = new Executioner(_nativeToken, _wrappedNativeToken);
         _setupAdmin(_admin);
         nativeToken = _nativeToken;
@@ -69,13 +76,16 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
         TradeFormat[] calldata trades,
         uint256 finalAmountMin,
         address depricated
-    ) external nonReentrant payable {
+    ) external payable nonReentrant {
         depricated;
         require(finalAmountMin > 0, "Slingshot: finalAmountMin cannot be zero");
         require(trades.length > 0, "Slingshot: trades cannot be empty");
-        for(uint256 i = 0; i < trades.length; i++) {
+        for (uint256 i = 0; i < trades.length; i++) {
             // Checks to make sure that module exists and is correct
-            require(moduleRegistry.isModule(trades[i].moduleAddress), "Slingshot: not a module");
+            require(
+                moduleRegistry.isModule(trades[i].moduleAddress),
+                "Slingshot: not a module"
+            );
         }
 
         uint256 initialBalance = _getTokenBalance(toToken);
@@ -90,9 +100,18 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
             finalBalance = _getTokenBalance(toToken);
         }
         uint finalOutputAmount = finalBalance - initialBalance;
-        require(finalOutputAmount >= finalAmountMin, "Slingshot: result is lower than required min");
+        require(
+            finalOutputAmount >= finalAmountMin,
+            "Slingshot: result is lower than required min"
+        );
 
-        emit Trade(fromToken, toToken, fromAmount, finalOutputAmount, _msgSender());
+        emit Trade(
+            fromToken,
+            toToken,
+            fromAmount,
+            finalOutputAmount,
+            _msgSender()
+        );
 
         // Send to msg.sender.
         executioner.sendFunds(toToken, _msgSender(), finalOutputAmount);
@@ -118,7 +137,11 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
     /// @param token The address of the token to rescue
     /// @param to The address of recipient
     /// @param amount The amount of the token to rescue
-    function rescueTokens(address token, address to, uint256 amount) external onlyAdmin {
+    function rescueTokens(
+        address token,
+        address to,
+        uint256 amount
+    ) external onlyAdmin {
         if (token == nativeToken) {
             (bool success, ) = to.call{value: amount}("");
             require(success, "Slingshot: ETH rescue failed.");
@@ -132,7 +155,11 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
     /// @param token The address of the token to rescue
     /// @param to The address of recipient
     /// @param amount The amount of the token to rescue
-    function rescueTokensFromExecutioner(address token, address to, uint256 amount) external onlyAdmin {
+    function rescueTokensFromExecutioner(
+        address token,
+        address to,
+        uint256 amount
+    ) external onlyAdmin {
         executioner.rescueTokens(token, to, amount);
     }
 
@@ -140,14 +167,23 @@ contract Slingshot is SlingshotI, Adminable, ConcatStrings, ReentrancyGuard {
     /// @param fromToken The address of the token
     /// @param from The address of sender that provides token
     /// @param amount The amount of the token to transfer
-    function _transferFromOrWrap(address fromToken, address from, uint256 amount) internal {
+    function _transferFromOrWrap(
+        address fromToken,
+        address from,
+        uint256 amount
+    ) internal {
         // transfer tokens or wrap ETH
         if (fromToken == nativeToken) {
             require(msg.value == amount, "Slingshot: incorrect ETH value");
             wrappedNativeToken.deposit{value: amount}();
             wrappedNativeToken.safeTransfer(address(executioner), amount);
         } else {
-            approvalHandler.transferFrom(fromToken, from, address(executioner), amount);
+            approvalHandler.transferFrom(
+                fromToken,
+                from,
+                address(executioner),
+                amount
+            );
         }
     }
 
