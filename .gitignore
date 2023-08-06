@@ -104,6 +104,6 @@ dist
 .tern-port
 
 contracts
-lib
+
 tests
 discord-export
