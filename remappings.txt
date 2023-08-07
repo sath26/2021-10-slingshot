@@ -1,2 +1,10 @@
-@openzeppelin/contracts/= openzeppelin-contracts/contracts/
+@erc725/=node_modules/@erc725/
+@openzeppelin/=node_modules/@openzeppelin/
+@uniswap/=node_modules/@uniswap/
+ds-test/=lib/forge-std/lib/ds-test/src/
+eth-gas-reporter/=node_modules/eth-gas-reporter/
 forge-std/=lib/forge-std/src/
+hardhat-deploy/=node_modules/hardhat-deploy/
+hardhat/=node_modules/hardhat/
+solidity-bytes-utils/=node_modules/solidity-bytes-utils/
+lib/forge-std:ds-test/=lib/forge-std/lib/ds-test/src/

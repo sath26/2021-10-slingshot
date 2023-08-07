@@ -2,7 +2,7 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "./openzeppelin-contracts/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /// @title   Admin Role Contract
 /// @author  DEXAG, Inc.

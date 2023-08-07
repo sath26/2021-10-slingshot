@@ -2,9 +2,9 @@
 pragma solidity 0.8.7;
 pragma abicoder v2;
 
-import "./openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
-import "./openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
-import "./openzeppelin-contracts/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interface/SlingshotI.sol";
 import "./interface/IWrappedNATIVE.sol";
 import "./lib/ConcatStrings.sol";

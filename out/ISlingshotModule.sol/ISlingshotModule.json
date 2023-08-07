@@ -1,0 +1,246 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "slingshotPing",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "slingshotPing()": "f9dc1386"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"slingshotPing\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"the only purpose of this is to allow for easy verification when adding new module\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Slingshot Abstract Module\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/module/ISlingshotModule.sol\":\"ISlingshotModule\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@erc725/=node_modules/@erc725/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@uniswap/=node_modules/@uniswap/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat-deploy/=node_modules/hardhat-deploy/\",\":hardhat/=node_modules/hardhat/\",\":solidity-bytes-utils/=node_modules/solidity-bytes-utils/\"]},\"sources\":{\"contracts/module/ISlingshotModule.sol\":{\"keccak256\":\"0xc318f19c11ad8064ea42792cdd5452a3a0c27b8f0464959ee932a1aba013b741\",\"license\":\"AGPLv3\",\"urls\":[\"bzz-raw://7676d2301e8f529f98d3f464083bb37657141b908ba9787a44d9c3bb25c0d2b5\",\"dweb:/ipfs/QmT8EmeycmMVDdY2L5VkyEYmKba3rpyWAHE5VSua1eguwL\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.7+commit.e28d00a7"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "pure",
+          "type": "function",
+          "name": "slingshotPing",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@erc725/=node_modules/@erc725/",
+        "@openzeppelin/=node_modules/@openzeppelin/",
+        "@uniswap/=node_modules/@uniswap/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "eth-gas-reporter/=node_modules/eth-gas-reporter/",
+        "forge-std/=lib/forge-std/src/",
+        "hardhat-deploy/=node_modules/hardhat-deploy/",
+        "hardhat/=node_modules/hardhat/",
+        "solidity-bytes-utils/=node_modules/solidity-bytes-utils/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/module/ISlingshotModule.sol": "ISlingshotModule"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/module/ISlingshotModule.sol": {
+        "keccak256": "0xc318f19c11ad8064ea42792cdd5452a3a0c27b8f0464959ee932a1aba013b741",
+        "urls": [
+          "bzz-raw://7676d2301e8f529f98d3f464083bb37657141b908ba9787a44d9c3bb25c0d2b5",
+          "dweb:/ipfs/QmT8EmeycmMVDdY2L5VkyEYmKba3rpyWAHE5VSua1eguwL"
+        ],
+        "license": "AGPLv3"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/module/ISlingshotModule.sol",
+    "id": 1532,
+    "exportedSymbols": {
+      "ISlingshotModule": [
+        1531
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "35:299:12",
+    "nodes": [
+      {
+        "id": 1520,
+        "nodeType": "PragmaDirective",
+        "src": "35:22:12",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".7"
+        ]
+      },
+      {
+        "id": 1521,
+        "nodeType": "PragmaDirective",
+        "src": "58:19:12",
+        "nodes": [],
+        "literals": [
+          "abicoder",
+          "v2"
+        ]
+      },
+      {
+        "id": 1531,
+        "nodeType": "ContractDefinition",
+        "src": "210:123:12",
+        "nodes": [
+          {
+            "id": 1530,
+            "nodeType": "FunctionDefinition",
+            "src": "251:80:12",
+            "nodes": [],
+            "body": {
+              "id": 1529,
+              "nodeType": "Block",
+              "src": "303:28:12",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "hexValue": "74727565",
+                    "id": 1527,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "320:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 1526,
+                  "id": 1528,
+                  "nodeType": "Return",
+                  "src": "313:11:12"
+                }
+              ]
+            },
+            "functionSelector": "f9dc1386",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "slingshotPing",
+            "nameLocation": "260:13:12",
+            "parameters": {
+              "id": 1523,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "273:2:12"
+            },
+            "returnParameters": {
+              "id": 1526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1525,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1530,
+                  "src": "297:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1524,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "297:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "296:6:12"
+            },
+            "scope": 1531,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 1522,
+          "nodeType": "StructuredDocumentation",
+          "src": "80:130:12",
+          "text": "@title Slingshot Abstract Module\n @dev   the only purpose of this is to allow for easy verification when adding new module"
+        },
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          1531
+        ],
+        "name": "ISlingshotModule",
+        "nameLocation": "228:16:12",
+        "scope": 1532,
+        "usedErrors": []
+      }
+    ],
+    "license": "AGPLv3"
+  },
+  "id": 12
+}
